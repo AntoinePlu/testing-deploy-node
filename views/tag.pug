@@ -1,0 +1,20 @@
+extends layout
+
+include mixins/_storeCard
+
+block content
+  .inner
+      // pre= h.dump(tags)
+      // define the title with the active tag or when it's empty, add Tags
+      h2 #{tag || 'Tags'}
+      ul.tags
+        each t in tags
+          li.tag
+            a.tag__link(href=`/tags/${t._id}` class=(t._id === tag ? 'tag__link--active' : ''))
+              span.tag__text= t._id
+              span.tag__count= t.count
+      // pre= h.dump(stores)
+      // Check if the stores related to the tags are here
+      .stores
+          each store in stores
+            +storeCard(store)

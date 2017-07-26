@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  .inner
+    form.form(method="POST")
+      pre= h.dump(user)
+      h2= title
+      lalel(for="password") New Password
+      input(type="password" name="password")
+      lalel(for="password-confirm") Confirm Password
+      input(type="password" name="password-confirm")
+      input.button(type="submit" value="Update Password")
